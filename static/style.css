@@ -1,25 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f0f2f5;
+    color: #333;
 }
 
 .container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
     background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    color: #333;
+    color: #2c3e50;
     text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
 }
 
 form {
@@ -28,38 +32,68 @@ form {
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #34495e;
 }
 
 input[type="file"],
 input[type="password"] {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
+    padding: 12px;
+    border: 2px solid #bdc3c7;
     border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="file"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #3498db;
 }
 
 button {
     display: inline-block;
-    background: #333;
+    background: #3498db;
     color: #fff;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background: #444;
+    background: #2980b9;
 }
 
 .error {
-    color: red;
-    margin-top: 10px;
+    color: #e74c3c;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #fadbd8;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Icon styles */
+i {
+    margin-right: 8px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
 }
