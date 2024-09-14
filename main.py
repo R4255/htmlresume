@@ -1,8 +1,7 @@
-from flask import Flask, request, render_template, send_file
+from flask import Flask, request, render_template, send_file, make_response
 from openai import OpenAI
 from PyPDF2 import PdfReader
 import io
-import os
 
 app = Flask(__name__)
 
@@ -27,12 +26,11 @@ def upload_file():
                 # Generate HTML resume using OpenAI API
                 html_resume = generate_html_resume(pdf_content, api_key)
                 
-                resume_filename = 'resume.html'
-                with open(resume_filename, 'w') as f:
-                    f.write(html_resume)
-                
-                # Return the generated HTML file to the user
-                return send_file(resume_filename, as_attachment=True)
+                # Return the generated HTML content as a response
+                response = make_response(html_resume)
+                response.headers['Content-Type'] = 'text/html'
+                return response
+            
             except Exception as e:
                 return render_template('upload.html', error=f'Error processing file: {str(e)}')
     
@@ -83,4 +81,4 @@ def generate_html_resume(pdf_content, api_key):
         return f"Error interacting with OpenAI API: {str(e)}"
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=False)
+    app.run(debug=False)  # Disable debug mode for production
